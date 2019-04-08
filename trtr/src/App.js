@@ -28,9 +28,10 @@ class App extends Component {
       }
     ];
 
+    console.log("testing inside");
     const todos = [
       {
-        title: "Today I'm going to talk to stevethecameraman",
+        title: "I'm streaming with tarminx and aj",
         ID: 0
       },
       {
@@ -40,10 +41,11 @@ class App extends Component {
     ];
     const todoItems = todos.map((todo, index) => (
       // Only do this if items have no stable IDs
-      <li key={todos.ID}>{todo.text}</li>
+      <li key={todos.ID}>{todo.title}</li>
     ));
+
     //jsx
-    return <div className="App">{todoItems.title}</div>;
+    return <div className="App">{todoItems}</div>;
   }
 }
 

@@ -5,16 +5,17 @@ import App from "./App";
 
 ReactDOM.render(<App />, document.getElementById("root"));
 
+function ListItem(props) {
+  return <li>{props.value}</li>;
+}
+
 function NumberList(props) {
-  const numbers = props.numbers;
+  const numbers = props.list;
   const listItems = numbers.map(number => (
-    <li key={number.toString()}>{number}</li>
+    <ListItem key={number.toString()} value={number} />
   ));
   return <ul>{listItems}</ul>;
 }
 
 const numbers = [1, 2, 3, 4, 5];
-ReactDOM.render(
-  <NumberList numbers={numbers} />,
-  document.getElementById("test")
-);
+ReactDOM.render(<NumberList list={numbers} />, document.getElementById("test"));
