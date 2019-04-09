@@ -4,6 +4,7 @@ import "./App.css";
 class App extends Component {
   render() {
     //all declarations go outside of the return
+
     let helloworld = "welcome to the jungle!";
     const fullname = {
       fname: "German",
@@ -53,9 +54,20 @@ class App extends Component {
         {todo.title} <img key={todo.ID} src={todo.URL} />
       </li>
     ));
+
+    const test = <h1>Testing the mic mic mic </h1>;
+
+    function test2(todo) {
+      return <h1>cheeeseburgger</h1>;
+    }
     console.log(todoItems);
     //jsx
-    return <div className="App">{todoItems}</div>;
+    return (
+      <div className="App">
+        {todoItems}
+        {test}
+      </div>
+    );
   }
 }
 
