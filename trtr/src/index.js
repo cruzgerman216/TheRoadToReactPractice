@@ -5,17 +5,43 @@ import App from "./App";
 
 ReactDOM.render(<App />, document.getElementById("root"));
 
-function ListItem(props) {
-  return <li>{props.value}</li>;
-}
-
-function NumberList(props) {
-  const numbers = props.list;
-  const listItems = numbers.map(number => (
-    <ListItem key={number.toString()} value={number} />
+function Blog(props) {
+  const sidebar = (
+    <ul>
+      {props.posts.map(post => (
+        <li key={post.id}>{post.title}</li>
+      ))}
+    </ul>
+  );
+  const content = props.posts.map(post => (
+    <div key={post.id}>
+      <h3>{post.title}</h3>
+      <p>{post.content}</p>
+    </div>
   ));
-  return <ul>{listItems}</ul>;
+  return (
+    <div>
+      {sidebar}
+      <hr />
+      {content}
+    </div>
+  );
 }
 
-const numbers = [1, 2, 3, 4, 5];
-ReactDOM.render(<NumberList list={numbers} />, document.getElementById("test"));
+const posts = [
+  { id: 1, title: "Hello World", content: "Welcome to learning React!" },
+  { id: 2, title: "Installation", content: "You can install React from npm." }
+];
+ReactDOM.render(<Blog posts={posts} />, document.getElementById("test"));
+
+const imageobject = {
+  name: "Part 1 - Intro to HTML",
+  id: 0,
+  url:
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/1200px-HTML5_logo_and_wordmark.svg.png"
+};
+
+function Test(IO) {
+  return <img src={IO.url} key={IO.id} />;
+}
+ReactDOM.render(<Test image={imageobject} />, document.getElementById("test2"));

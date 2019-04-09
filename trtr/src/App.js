@@ -28,22 +28,32 @@ class App extends Component {
       }
     ];
 
-    console.log("testing inside");
     const todos = [
       {
         title: "I'm streaming with tarminx and aj",
-        ID: 0
+        ID: 0,
+        URL: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/025.png"
       },
       {
         title: "Going to code in react today",
-        ID: 1
+        ID: 1,
+        URL: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/025.png"
+      },
+      {
+        title: "Dude where's my car?",
+        ID: 2,
+        URL: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/025.png"
       }
     ];
-    const todoItems = todos.map((todo, index) => (
-      // Only do this if items have no stable IDs
-      <li key={todos.ID}>{todo.title}</li>
+    const getstyle = {
+      backgroundColor: "grey"
+    };
+    const todoItems = todos.map(todo => (
+      <li key={todo.ID} style={getstyle}>
+        {todo.title} <img key={todo.ID} src={todo.URL} />
+      </li>
     ));
-
+    console.log(todoItems);
     //jsx
     return <div className="App">{todoItems}</div>;
   }
