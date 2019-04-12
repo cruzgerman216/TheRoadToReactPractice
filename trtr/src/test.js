@@ -1,13 +1,11 @@
-import react, { Component } from "react";
+import React, { Component } from "react";
 
-class App extends Component {
+class Test extends Component {
   render() {
-    return (
-      <div>
-        <h1>Welcome to test.js</h1>
-      </div>
-    );
+    const test = <h1>Inside Test.js</h1>;
+
+    return <div>{test}</div>;
   }
 }
 
-export default test;
+export default Test;

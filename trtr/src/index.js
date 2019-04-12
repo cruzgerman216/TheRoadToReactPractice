@@ -3,9 +3,9 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import Animal from "./Animal";
-import test from "./test";
+import Test from "./Test";
 ReactDOM.render(<Animal />, document.getElementById("animalroot"));
-ReactDOM.render(<test />, document.getElementById("testroot"));
+ReactDOM.render(<Test />, document.getElementById("testroot"));
 
 ReactDOM.render(<App />, document.getElementById("root"));
 
@@ -44,8 +44,3 @@ const imageobject = {
   url:
     "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/1200px-HTML5_logo_and_wordmark.svg.png"
 };
-
-function Test(IO) {
-  return <img src={IO.url} key={IO.id} />;
-}
-ReactDOM.render(<Test image={imageobject} />, document.getElementById("test2"));
