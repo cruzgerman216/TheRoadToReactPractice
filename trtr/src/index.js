@@ -3,8 +3,9 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import Animal from "./Animal";
-
+import test from "./test";
 ReactDOM.render(<Animal />, document.getElementById("animalroot"));
+ReactDOM.render(<test />, document.getElementById("testroot"));
 
 ReactDOM.render(<App />, document.getElementById("root"));
 
