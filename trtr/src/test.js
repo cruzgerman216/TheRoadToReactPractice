@@ -1,10 +1,16 @@
 import React, { Component } from "react";
 
 class Test extends Component {
-  render() {
-    const test = <h1>Inside Test.js</h1>;
+  getGreeting() {
+    return "welcome to react";
+  }
 
-    return <div>{test}</div>;
+  render() {
+    return (
+      <div>
+        <h1>{this.getGreeting()}</h1>
+      </div>
+    );
   }
 }
 

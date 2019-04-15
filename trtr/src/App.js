@@ -1,71 +1,66 @@
 import React, { Component } from "react";
 import "./App.css";
+const list = [
+  {
+    title: "React",
+    url: "https://reactjs.org/",
+    author: "Jordan Walke",
+    num_comments: 3,
+    points: 4,
+    objectID: 0
+  },
+  {
+    title: "Redux",
+    url: "https://redux.js.org/",
+    author: "Dan Abramov, Andrew Clark",
+    num_comments: 2,
+    points: 5,
+    objectID: 1
+  }
+];
 
+const todo = [
+  {
+    item: "clean my car",
+    ObjectID: 0
+  },
+  {
+    item: "clean the room",
+    ObjectID: 1
+  }
+];
+const getstyle = {
+  backgroundColor: "blue"
+};
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      list: list,
+      todo: todo
+    };
+  }
+
   render() {
     //all declarations go outside of the return
-
-    let helloworld = "welcome to the jungle!";
-    const fullname = {
-      fname: "German",
-      lname: "Cruz"
-    };
-    const list = [
-      {
-        title: "React",
-        url: "https://reactjs.org/",
-        author: "Jordan Walke",
-        num_comments: 3,
-        points: 4,
-        objectID: 0
-      },
-      {
-        title: "Redux",
-        url: "https://redux.js.org/",
-        author: "Dan Abramov, Andrew Clark",
-        num_comments: 2,
-        points: 5,
-        objectID: 1
-      }
-    ];
-
-    const todos = [
-      {
-        title: "I'm streaming with tarminx and aj",
-        ID: 0,
-        URL: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/025.png"
-      },
-      {
-        title: "Going to code in react today",
-        ID: 1,
-        URL: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/025.png"
-      },
-      {
-        title: "Dude where's my car?",
-        ID: 2,
-        URL: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/025.png"
-      }
-    ];
-    const getstyle = {
-      backgroundColor: "grey"
-    };
-    const todoItems = todos.map(todo => (
-      <li key={todo.ID} style={getstyle}>
-        {todo.title} <img key={todo.ID} src={todo.URL} />
-      </li>
-    ));
-
-    const test = <h1>Testing the mic mic mic </h1>;
-
-    function test2(todo) {
-      return <h1>cheeeseburgger</h1>;
-    }
-    console.log(todoItems);
     //jsx
     return (
       <div className="App">
-        {todoItems}
-        {test}
+        {this.state.list.map(item => (
+          <div key={item.objectID}>
+            <span>
+              <a href={item.url}>{item.title}</a>
+            </span>
+            <span>{item.author}</span>
+            <span>{item.num_comments}</span>
+            <span>{item.points}</span>
+          </div>
+        ))}
+        {this.state.todo.map(Item => (
+          <h2 key={Item.objectID} style={getstyle}>
+            {Item.item}
+          </h2>
+        ))}
       </div>
     );
   }
