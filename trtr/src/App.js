@@ -29,6 +29,11 @@ const todo = [
     ObjectID: 1
   }
 ];
+const testingfunction = {
+  gettest(dude) {
+    return <h1>Where is my {dude}</h1>;
+  }
+};
 const getstyle = {
   backgroundColor: "blue"
 };
@@ -36,7 +41,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      list: list,
+      list,
       todo: todo
     };
   }
@@ -46,6 +51,7 @@ class App extends Component {
     //jsx
     return (
       <div className="App">
+        {testingfunction.gettest(<h1>idk</h1>)}
         {this.state.list.map(item => (
           <div key={item.objectID}>
             <span>
@@ -61,6 +67,7 @@ class App extends Component {
             {Item.item}
           </h2>
         ))}
+        <h1>{this.state.todo[0].item} TESTING THE TEST</h1>
       </div>
     );
   }
