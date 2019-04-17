@@ -37,10 +37,3 @@ const posts = [
   { id: 2, title: "Installation", content: "You can install React from npm." }
 ];
 ReactDOM.render(<Blog posts={posts} />, document.getElementById("test"));
-
-const imageobject = {
-  name: "Part 1 - Intro to HTML",
-  id: 0,
-  url:
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/1200px-HTML5_logo_and_wordmark.svg.png"
-};
