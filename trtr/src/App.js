@@ -37,6 +37,9 @@ var dropbtn = {
   fontFamily: "inherit",
   margin: "0px"
 };
+var dropdisplay = {
+  display: "none"
+};
 const seriesList = [
   {
     title: "HTML Series",
@@ -78,6 +81,7 @@ class App extends Component {
         fontFamily: "inherit",
         margin: "0px"
       };
+      dropdisplay = { display: "block" };
       seriesList[0].click = false;
     } else {
       dropbtn = {
@@ -90,6 +94,8 @@ class App extends Component {
         fontFamily: "inherit",
         margin: "0px"
       };
+      dropdisplay = { display: "none" };
+
       seriesList[0].click = true;
     }
   }
@@ -124,7 +130,7 @@ class App extends Component {
               onClick={() => this.onDismiss(item.objectID)}
               type="button"
             >
-              {item.title}
+              {item.title} <h1 style={dropdisplay}>Bleh</h1>
             </button>
           </div>
         ))}

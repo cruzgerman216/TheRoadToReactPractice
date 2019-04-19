@@ -37,3 +37,14 @@ const posts = [
   { id: 2, title: "Installation", content: "You can install React from npm." }
 ];
 ReactDOM.render(<Blog posts={posts} />, document.getElementById("test"));
+
+function tick() {
+  const element = (
+    <div>
+      <h1>Hello, world!</h1>
+      <h2>It is {new Date().toLocaleTimeString()}.</h2>
+    </div>
+  );
+  ReactDOM.render(element, document.getElementById("ticking"));
+}
+setInterval(tick, 1000);
