@@ -3,6 +3,7 @@ import React, { Component } from "react";
 class Test extends Component {
   constructor(props) {
     super(props);
+    var test = 1 - Date();
     this.state = { date: new Date() };
   }
 

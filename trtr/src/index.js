@@ -37,3 +37,13 @@ const posts = [
   { id: 2, title: "Installation", content: "You can install React from npm." }
 ];
 ReactDOM.render(<Blog posts={posts} />, document.getElementById("test"));
+(function timer() {
+  for (var j = 0; j <= 5; j++) {
+    (function() {
+      var i = j;
+      setTimeout(function clog() {
+        console.log(i);
+      }, i * 1000);
+    })();
+  }
+})();

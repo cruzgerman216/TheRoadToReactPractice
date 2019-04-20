@@ -120,6 +120,10 @@ class App extends Component {
               >
                 Dismiss
               </button>
+              <button onClick={console.log("testing appjs")}>
+                {" "}
+                Click on de button
+              </button>
             </span>
           </div>
         ))}
