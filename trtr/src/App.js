@@ -56,88 +56,32 @@ const seriesList = [
   }
 ];
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      list,
-      seriesList
-    };
-    this.onDismiss = this.onDismiss.bind(this);
+  state = {
+    name: "Ryu",
+    age: 30
+  };
+
+  handleClick(e) {
+    //console.log(e.target);
+    console.log(state);
   }
 
-  onDismiss(id) {
-    const updatedList = this.state.list.filter(item => item.objectID !== id);
-    this.setState({ list: updatedList });
-    console.log("test");
-    if (seriesList[0].click) {
-      console.log("i'm in the click");
-      dropbtn = {
-        fontSize: "17px",
-        border: "none",
-        outline: "none",
-        color: "grey",
-        padding: "14px 16px",
-        backgroundColor: "black",
-        fontFamily: "inherit",
-        margin: "0px"
-      };
-      dropdisplay = { display: "block" };
-      seriesList[0].click = false;
-    } else {
-      dropbtn = {
-        fontSize: "17px",
-        border: "none",
-        outline: "none",
-        color: "grey",
-        padding: "14px 16px",
-        backgroundColor: "white",
-        fontFamily: "inherit",
-        margin: "0px"
-      };
-      dropdisplay = { display: "none" };
-
-      seriesList[0].click = true;
-    }
+  handleMouseOver(e) {
+    console.log(e.target, e.pageX);
   }
-
+  handleCopy(e) {
+    console.log("try being original for once");
+  }
   render() {
-    //all declarations go outside of the return
-    //jsx
     return (
-      <div className="App">
-        {this.state.list.map(item => (
-          <div key={item.objectID}>
-            <span>
-              <a href={item.url}>{item.title}</a>
-            </span>
-            <span>{item.author}</span>
-            <span>{item.num_comments}</span>
-            <span>{item.points}</span>
-            <span>
-              <button
-                onClick={() => this.onDismiss(item.objectID)}
-                type="button"
-              >
-                Dismiss
-              </button>
-              <button onClick={console.log("testing appjs")}>
-                {" "}
-                Click on de button
-              </button>
-            </span>
-          </div>
-        ))}
-        {this.state.seriesList.map(item => (
-          <div key={item.objectID}>
-            <button
-              style={dropbtn}
-              onClick={() => this.onDismiss(item.objectID)}
-              type="button"
-            >
-              {item.title} <h1 style={dropdisplay}>Bleh</h1>
-            </button>
-          </div>
-        ))}
+      <div className="app-content">
+        <h1>Hey, Dudes</h1>
+        <p>
+          My name is {this.state.name} and i am {this.state.age}
+        </p>
+        <button onClick={this.handleClick}>Click Me</button>
+        <button onMouseOver={this.handleMouseOver}>hover Me</button>
+        <p onCopy={this.handleCopy}> What we think, we become</p>
       </div>
     );
   }
