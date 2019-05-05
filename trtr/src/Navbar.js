@@ -3,8 +3,24 @@ import "./navbar.css";
 //CLICKING on sign in will change to sign out
 
 class Navbar extends Component {
+  state = {
+    name: "Ryu",
+    age: 30,
+    sign: "Sign In"
+  };
+  sign = e => {
+    if (this.state.sign === "Sign In") {
+      this.setState({
+        sign: "Sign Out"
+      });
+    } else {
+      this.setState({
+        sign: "Sign In"
+      });
+    }
+  };
+
   render() {
-    var sign = "Sign In";
     return (
       <div>
         <ul className="nav">
@@ -18,8 +34,8 @@ class Navbar extends Component {
             <a href="#">Forum</a>
           </li>
 
-          <li className="signfloat">
-            <a href="#">{sign}</a>
+          <li onClick={this.sign} className="signfloat">
+            <a href="#">{this.state.sign}</a>
           </li>
         </ul>
       </div>
