@@ -4,8 +4,8 @@ import "./navbar.css";
 
 class Navbar extends Component {
   state = {
-    name: "Ryu",
-    age: 30,
+    email: "cruzgerman216@yahoo.",
+    password: "password",
     sign: "Sign In"
   };
   sign = e => {
