@@ -6,21 +6,23 @@ class Navbar extends Component {
   state = {
     email: "cruzgerman216@yahoo.",
     password: "password",
-    sign: "Sign In"
+    log: "Sign In"
   };
   sign = e => {
-    if (this.state.sign === "Sign In") {
+    if (this.state.log === "Sign In") {
       this.setState({
-        sign: "Sign Out"
+        log: "Sign Out"
       });
     } else {
       this.setState({
-        sign: "Sign In"
+        log: "Sign In"
       });
     }
   };
 
   render() {
+    //console.log(this.props);
+    const { sign } = this.props;
     return (
       <div>
         <ul className="nav">
@@ -35,7 +37,7 @@ class Navbar extends Component {
           </li>
 
           <li onClick={this.sign} className="signfloat">
-            <a href="#">{this.state.sign}</a>
+            <a href="#">{sign}</a>
           </li>
         </ul>
       </div>
