@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import Navbar from "./Navbar";
 import Login_Form from "./Login_Form";
+//container
+//app.js container -> navbar ui component, login_form container
 
 class App extends Component {
   render() {
