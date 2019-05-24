@@ -1,0 +1,52 @@
+<!--Problem 5 - Use switch to get different outputs -->
+<!--React file without create-react-app-->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script
+      crossorigin
+      src="https://unpkg.com/react@16/umd/react.development.js"
+    ></script>
+    <!-- core react libary-->
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+    ></script>
+    <!--react dom that lets us inject our components-->
+
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <script type="text/babel">
+      class App extends React.Component {
+        render() {
+          var num = Math.floor(Math.random() * 100 + 1);
+          console.log(num);
+
+          switch (true) {
+            case num > 0 && num < 19:
+              return <div>This is {num}</div>;
+            case num > 20 && num < 39:
+              return <div>This is {num}</div>;
+            case num > 40 && num < 59:
+              return <div>This is {num}</div>;
+            case num > 60 && num < 79:
+              return <div>This is {num}</div>;
+            case num > 80 && num <= 100:
+              return <div>This is {num}</div>;
+
+            default:
+              return <div> nothing to return</div>;
+          }
+        }
+      }
+
+      ReactDOM.render(<App />, document.getElementById("app"));
+    </script>
+  </body>
+</html>

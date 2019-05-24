@@ -1,0 +1,19 @@
+What is react
+javascript library created by facebook
+also used by netflix and instagram
+used to create js-driven dynamic web apps
+in that regard, can be compared to vue and angular
+
+How React works 
+- components, reacts job to inject them into the DOM
+
+How does react do this?
+- takes the JS and makes it into a virtual dom and then compares it with the old dom and 
+then renders it into a new dom and only updates that one component if it changes. It does not change 
+all of the website or components. 
+    - This cycle happens when the data changes 
+
+What are components and templates?
+- components look like html templates (actuall jsx)
+- They can contain 'state' (data UI state)
+- they also can contain javascript for functionality 

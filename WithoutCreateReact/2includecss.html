@@ -1,0 +1,76 @@
+<!--Problem 3 - Add CSS to the navbar and post-->
+<!--React file without create-react-app-->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script
+      crossorigin
+      src="https://unpkg.com/react@16/umd/react.development.js"
+    ></script>
+    <!-- core react libary-->
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+    ></script>
+    <!--react dom that lets us inject our components-->
+
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      ul {
+        background-color: black;
+      }
+      ul li {
+        display: inline-block;
+        padding: 16px 24px;
+        background-color: rgb(168, 70, 70);
+      }
+
+      .Post h1 {
+        text-align: center;
+        margin: 23px 0px;
+      }
+      .Post p {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="nav"></div>
+    <div id="post"></div>
+
+    <script type="text/babel">
+      class Nav extends React.Component {
+        render() {
+          return (
+            <div className="nav">
+              <ul>
+                <li>Link 1</li>
+                <li>Link 2</li>
+              </ul>
+            </div>
+          );
+        }
+      }
+
+      class Post extends React.Component {
+        render() {
+          return (
+            <div className="Post">
+              <h1>Post Header</h1>
+              <p>Blah blah blah</p>
+            </div>
+          );
+        }
+      }
+      ReactDOM.render(<Nav />, document.getElementById("nav"));
+      ReactDOM.render(<Post />, document.getElementById("post"));
+    </script>
+  </body>
+</html>
