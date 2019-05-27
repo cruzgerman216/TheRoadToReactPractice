@@ -1,0 +1,43 @@
+<!--Problem 8 - store html in variables -->
+<!--React file without create-react-app-->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script
+      crossorigin
+      src="https://unpkg.com/react@16/umd/react.development.js"
+    ></script>
+    <!-- core react libary-->
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+    ></script>
+    <!--react dom that lets us inject our components-->
+
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <script type="text/babel">
+      var html = <h1>Dude this is a header </h1>;
+      console.log(html);
+      var str = "can i put a string inside a variable with jsx?";
+      var strjsx = <p>{str} -- yes you can</p>;
+      class App extends React.Component {
+        render() {
+          return (
+            <div>
+              {html} {strjsx}
+            </div>
+          );
+        }
+      }
+
+      ReactDOM.render(<App />, document.getElementById("app"));
+    </script>
+  </body>
+</html>

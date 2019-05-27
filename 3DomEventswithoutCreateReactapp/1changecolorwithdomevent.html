@@ -1,0 +1,54 @@
+<!--Problem 1 - change color by clicking on a button-->
+<!--I've also learned I can't do anything with these dom events without messing with the state because
+it won't refresh the page afterwords
+-->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script
+      crossorigin
+      src="https://unpkg.com/react@16/umd/react.development.js"
+    ></script>
+    <!-- core react libary-->
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+    ></script>
+    <!--react dom that lets us inject our components-->
+
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <script type="text/babel">
+      var color = {
+        color: "red"
+      };
+      var value = 3;
+      class App extends React.Component {
+        state = {
+          color: { color: "red" }
+        };
+        handleClick() {
+          //this is not in this scope
+          color = { color: "green" };
+        }
+        render() {
+          return (
+            <div>
+              <p style={this.state.color}>Change this color to blue!</p>
+              <button onClick={this.handleClick}>Click to change color</button>
+              <p>{value}</p>
+            </div>
+          );
+        }
+      }
+
+      ReactDOM.render(<App />, document.getElementById("app"));
+    </script>
+  </body>
+</html>

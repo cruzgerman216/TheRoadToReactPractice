@@ -1,0 +1,83 @@
+<!--Problem 5 - Make a text change colors every millisecond-->
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script
+      crossorigin
+      src="https://unpkg.com/react@16/umd/react.development.js"
+    ></script>
+    <!-- core react libary-->
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+    ></script>
+    <!--react dom that lets us inject our components-->
+
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <script type="text/babel">
+      var r = 0,
+        g = 0,
+        b = 0;
+      class App extends React.Component {
+        state = {
+          color: { color: "rgb(" + r + "," + g + "," + b + ")" },
+          a: Math.floor(Math.random() * 256),
+          b: Math.floor(Math.random() * 256),
+          c: Math.floor(Math.random() * 256)
+        };
+
+        checknumber(num) {
+          if (num > 255) {
+            num = Math.floor(Math.random() * 256);
+            return num;
+          } else {
+            return num;
+          }
+        }
+        changeColor = e => {
+          this.timer = setInterval(() => {
+            this.setState({
+              color: {
+                color:
+                  "rgb(" +
+                  this.state.a +
+                  "," +
+                  this.state.b +
+                  "," +
+                  this.state.c +
+                  ")"
+              },
+              a: this.checknumber(this.state.a) + 1,
+              b: this.checknumber(this.state.b) + 1,
+              c: this.checknumber(this.state.c) + 1
+            });
+          }, 100);
+          console.log(this.state.a);
+        };
+        render() {
+          return (
+            <div>
+              <h1 style={this.state.color}>Change this color</h1>
+              <button onClick={this.changeColor}>
+                Make this Header Color Dynamic
+              </button>
+            </div>
+          );
+        }
+      }
+      ReactDOM.render(<App />, document.getElementById("app"));
+    </script>
+  </body>
+</html>
+
+<!--End notes
+    you can easily do stuff like this in pure JS but it was nice to see what i can do. 
+-->

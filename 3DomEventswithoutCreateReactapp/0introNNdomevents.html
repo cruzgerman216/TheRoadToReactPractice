@@ -1,5 +1,3 @@
-<!--Problem 5 - Use switch to get different outputs -->
-<!--React file without create-react-app-->
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -24,28 +22,35 @@
 
     <script type="text/babel">
       class App extends React.Component {
+        state = {
+          name: "Ryu",
+          age: 30
+        };
+
+        handleClick(e) {
+          console.log(e.target);
+        }
+        handleMouseOver(e) {
+          console.log(e.target);
+        }
+        handleCopy(e) {
+          console.log("try being original for once");
+        }
         render() {
-          var num = Math.floor(Math.random() * 100 + 1);
-          console.log(num);
-
-          switch (true) {
-            case num > 0 && num < 19:
-              return <div>This is {num}</div>;
-            case num > 20 && num < 39:
-              return <div>This is {num}</div>;
-            case num > 40 && num < 59:
-              return <div>This is {num}</div>;
-            case num > 60 && num < 79:
-              return <div>This is {num}</div>;
-            case num > 80 && num <= 100:
-              return <div>This is {num}</div>;
-
-            default:
-              return <div> nothing to return</div>;
-          }
+          return (
+            <div className="app-content">
+              <h1>Hey, ninjas </h1>
+              <p>
+                My name is {this.state.name} and i am {this.state.age}
+              </p>
+              <button onClick={this.handleClick}>Click Me</button>
+              <button onMouseOver={this.handleMouseOver}>Hover me</button>
+              <p onCopy={this.handleCopy}>What we think, we became</p>
+              {true ? "dude" : "bruh"}
+            </div>
+          );
         }
       }
-
       ReactDOM.render(<App />, document.getElementById("app"));
     </script>
   </body>

@@ -1,0 +1,59 @@
+<!--Problem 1 - CLick on a button to change the color of the text-->
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script
+      crossorigin
+      src="https://unpkg.com/react@16/umd/react.development.js"
+    ></script>
+    <!-- core react libary-->
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+    ></script>
+    <!--react dom that lets us inject our components-->
+
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <script type="text/babel">
+      var change = { color: "green" };
+      class App extends React.Component {
+        state = {
+          color: { color: "blue" }
+        };
+
+        changeColor = e => {
+          this.setState({
+            color: { color: "red" }
+          });
+
+          change = { color: "blue" };
+        };
+        render() {
+          return (
+            <div>
+              <p style={this.state.color}>blue text</p>
+              <p style={change}>This is not the state </p>
+              <button onClick={this.changeColor}>Click to change to red</button>
+            </div>
+          );
+        }
+      }
+
+      ReactDOM.render(<App />, document.getElementById("app"));
+    </script>
+  </body>
+</html>
+
+<!--End notes
+You won't be able to manipulate ANY of the documents unless setState({}) is called. 
+You can indeed change the variables and then manipulate the page but the dom won't be compared until setState is called
+so you need setState to technically "refresh" the page in a sense
+-->

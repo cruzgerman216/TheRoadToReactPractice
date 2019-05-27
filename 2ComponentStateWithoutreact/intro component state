@@ -1,0 +1,6 @@
+javascript object
+describes the current state of the component
+- data, ui-state
+- the state of a component can be updated over time
+    - a modal could close
+    - the data we output could change
