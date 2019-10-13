@@ -1,0 +1,18 @@
+post http://localhost:3003/api/blogs
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0aXRsZSI6InRlc3RibG9nIiwiYXV0aG9yIjoiU3RyaW5nIiwidXJsIjoiU3RyaW5nIiwibGlrZXMiOjMsInVzZXJJZCI6IjVkYTM0OTdjOTI0M2U2Mzk4YzNjZjU4OSJ9.o9MQgkCnNS3jMhMYAxnLq6RrJBRxtajTR-vU3A9Mcy8
+
+{
+"title": "test1", 
+"author": "String",
+ "url":"String", 
+ "likes": 3, 
+ "userId":"5da3497c9243e6398c3cf589"
+}
+
+//make sure the set up looks exactly like this with extra lines
+//the token must be different for each note
+//so put this object in the payload data for 
+//https://jwt.io/ 
+//it will generate a token and then it will output the bearer
+//place the bearer token in the authorization header 
