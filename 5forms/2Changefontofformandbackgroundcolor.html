@@ -1,0 +1,106 @@
+<!--Problem 1 - Make a full fledge form and be able to change the background and font -->
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script
+      crossorigin
+      src="https://unpkg.com/react@16/umd/react.development.js"
+    ></script>
+    <!-- core react libary-->
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+    ></script>
+    <!--react dom that lets us inject our components-->
+
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <script type="text/babel">
+      class App extends React.Component {
+        state = {
+          fname: "",
+          lname: "",
+          age: 0,
+          changeFont: { fontSize: "12px" },
+          background: { backgroundColor: "white" }
+        };
+        handleSubmit = e => {
+          e.preventDefault();
+          console.log(this.state.fname);
+        };
+
+        handleFname = e => {
+          this.setState({
+            fname: e.target.value
+          });
+        };
+        handleLname = e => {
+          this.setState({
+            lname: e.target.value
+          });
+        };
+        handleAge = e => {
+          this.setState({
+            age: e.target.value
+          });
+        };
+
+        changeFont = e => {
+          if (this.state.changeFont.fontSize == "20px") {
+            this.setState({
+              changeFont: { fontSize: "10px" }
+            });
+          } else {
+            this.setState({
+              changeFont: { fontSize: "20px" }
+            });
+          }
+        };
+
+        changeBackground = e => {
+          if (this.state.background.backgroundColor == "red") {
+            this.setState({
+              background: { backgroundColor: "white" }
+            });
+          } else {
+            this.setState({
+              background: { backgroundColor: "red" }
+            });
+          }
+        };
+        render() {
+          return (
+            <div style={{ ...this.state.changeFont, ...this.state.background }}>
+              <form onSubmit={this.handleSubmit}>
+                First Name: <input type="text" onChange={this.handleFname} />
+                Last Name: <input type="text" onChange={this.handleLname} />
+                Age: <input type="number" onChange={this.handleAge} />
+                <button>Submit</button>
+              </form>
+              <button onClick={this.changeFont}>Change Font</button>
+              <button onClick={this.changeBackground}>
+                Change Background to Dark
+              </button>
+              <p>First Name: {this.state.fname}</p>
+              <p>Last Name: {this.state.lname}</p>
+              <p>Age: {this.state.age}</p>
+            </div>
+          );
+        }
+      }
+
+      ReactDOM.render(<App />, document.getElementById("app"));
+    </script>
+  </body>
+</html>
+
+<!--End notes
+    you can easily do stuff like this in pure JS but it was nice to see what i can do. 
+-->

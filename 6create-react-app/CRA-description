@@ -1,0 +1,11 @@
+Create-React-App
+a command line tool to create react apps
+    - development server
+    - use es6 features which are not normally supported
+    - keep our code modular 
+    - use build tools to create optimized code 
+
+Single Page apps
+- React apps are typically SPA's
+- Only ever one HTML page served to the browser
+- React then controls what a user sees on that page

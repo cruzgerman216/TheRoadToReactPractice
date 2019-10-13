@@ -1,0 +1,22 @@
+ReactRouter outter for the app.js div(parent component) 
+Route, compone={}, path="" slef closing tag
+Link   Link to="/"    acts as an a atribute
+NavLink NavLink to"/" acts as an a atribute 
+when you pick the NavLink component, you are able to have the component have a class called active
+different styles to the links 
+
+props.history.push will allow us to redirect to a different page
+(does not work for navbar because it is not in a route)
+
+wrapping another component involves the parameter to be wrappedcomponent such as
+rainbow = wrapped component
+this allows us to include <WrappComponent {...props}> 
+
+withRouter in Navbar 
+higher order comonents -> withRouter(Nacvar) wrapping around the component, applying these properties to the props, super cahrge the component 
+So Route element for example,
+<Router component={Home} path="/"/>
+can get inherited props, props.history.push for example 
+and Navbar cannot because it does not include a Route
+but to supercharge it, you have to wrap it with withRouter(Navbar)
+export default withRouter(Navbar);

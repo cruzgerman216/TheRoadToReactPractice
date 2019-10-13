@@ -1,0 +1,12 @@
+Container vs UI components
+container components 
+- Contain state
+- contain lifecycle hooks
+- not concerned with UI
+- use classes to create
+
+UI components
+- don't contain state
+- receive data from props
+- only concerned with UI
+- use functions to create

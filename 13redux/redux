@@ -1,0 +1,14 @@
+Redux
+- central data store for all app data
+- any component can access data from ti
+- makes state management easy
+
+defining a central store to redux 
+-> component subscribes to changes - props 
+the component dispatches an action (contains optional payload) 
+action passed to reducer and then the reducer updates the central state 
+
+npm install react-redux is gonna allow us to connect with the store
+react-app and our redux store
+
+provider - provide our store

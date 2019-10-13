@@ -1,0 +1,24 @@
+Axios - getting dummy data - fetching data from an external source 
+(home js for notes)
+
+route parameters 
+- part of a url that can change
+
+-usually see them on urls for individual records
+
+user profile route:
+mysite.com/users/yoshi2k2
+msite.com/user/mariotheman
+
+cooking recipe pages
+mycookingsite.com/reicipes/1235
+mycookingsite.com/reicipes/5454
+
+switch tag in app.js
+i only want one component showing and it will load it
+"does it match this one, yes it does, it will stop right there"
+this will allow components not to showu p at the same time 
+
+
+using an image inside a component
+you need to import the image

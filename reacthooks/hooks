@@ -1,0 +1,6 @@
+context API
+- clean and easy way to sahre state between components 
+- tap into the inner workings of react in functional components
+(redux-like, state maangement magic) pretty much how redux acts but without a third party engagement 
+
+share state within a component tree

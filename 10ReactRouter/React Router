@@ -1,0 +1,5 @@
+instead of SPA, what if you want to look at other web pages?
+the intial request goes to the server, then gives  response to another page. 
+if we like to go to another webpage, what react would do is use react router to circle around and provide that without
+having to use the server 
+
