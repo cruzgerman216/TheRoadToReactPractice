@@ -24,18 +24,18 @@ blogsRouter.post("/", async (request, response) => {
     const decodedToken = jwt.verify(request.token, process.env.SECRET);
     console.log("token", decodedToken);
 
-    if (!request.token || !decodedToken.userId) {
+    if (!request.token || !decodedToken.id) {
       return response.status(401).json({ error: "token missing or invalid" });
     }
     const body = request.body;
-    const user = await User.findById(body.userId);
-
+    const user = await User.findById(decodedToken.id);
+    console.log("this is the user", user);
     const blog = new Blog({
       title: body.title,
       author: body.author,
       url: body.url,
-      likes: body.likes,
-      user: user._id
+      likes: 4,
+      user: user.id
     });
     const saveBlog = await blog.save();
     user.blogs = user.blogs.concat(saveBlog._id);

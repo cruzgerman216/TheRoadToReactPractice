@@ -12,6 +12,7 @@ function App() {
   const [newnumber, setNewNumber] = useState("");
   const [filter, setFilter] = useState("");
   const [message, setMessage] = useState(null);
+  const [loginVisible, setLoginVisible] = useState(false);
 
   const getfilter = persons.filter(person => {
     let copyfilter = filter;
@@ -87,6 +88,30 @@ function App() {
     ) : (
       <Persons persons={searchpersons} />
     );
+
+  const loginForm = () => {
+    const hideWhenVisible = { display: loginVisible ? "none" : "" };
+    const showWhenVisible = { display: loginVisible ? "" : "none" };
+
+    return (
+      <div>
+        <div style={hideWhenVisible}>
+          <button onClick={() => setLoginVisible(true)}>log in</button>
+        </div>
+        <div style={showWhenVisible}>
+          <LoginForm
+            username={username}
+            password={password}
+            handleUsernameChange={({ target }) => setUsername(target.value)}
+            handlePasswordChange={({ target }) => setPassword(target.value)}
+            handleSubmit={handleLogin}
+          />
+          <button onClick={() => setLoginVisible(false)}>cancel</button>
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div>
       <h2>Phonebook</h2>
