@@ -17,7 +17,13 @@ const App = () => {
   const [userblogs, setUserBlogs] = useState([]);
   useEffect(() => {
     blogService.getAll().then(initialBlogs => {
-      return setBlogs(initialBlogs);
+      console.log("test");
+      let copyblogs = initialBlogs;
+      copyblogs.sort(function(a, b) {
+        return a.likes > b.likes ? 1 : -1;
+      });
+      console.log("copyblogs", copyblogs);
+      return setBlogs(copyblogs);
     });
   }, []);
   useEffect(() => {
@@ -41,7 +47,7 @@ const App = () => {
     );
     console.log("this is filtered", filterblogs);
     return filterblogs.map(blog => {
-      return <Blog blog={blog} key={blog.id} />;
+      return <Blog blog={blog} key={blog.id} username={user.username} />;
     });
   };
 
@@ -52,6 +58,7 @@ const App = () => {
       const filterblogs = blogs.filter(
         blog => blog.user.username === user.username
       );
+
       setBlogs(filterblogs);
 
       window.localStorage.setItem("loggedblogappUser", JSON.stringify(user));

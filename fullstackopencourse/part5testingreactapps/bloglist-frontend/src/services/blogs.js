@@ -20,10 +20,22 @@ const create = async newObject => {
 };
 
 const update = (id, newObject) => {
-  const request = axios.put(`${baseUrl}/${id}`, newObject);
+  const config = {
+    headers: { Authorization: token }
+  };
+  const request = axios.put(`${baseUrl}/${id}`, newObject, config);
   return request.then(response => response.data);
 };
 
-export default { getAll, create, update, setToken };
+const deleteblog = id => {
+  const config = {
+    headers: { Authorization: token }
+  };
+  const request = axios.delete(`${baseUrl}/${id}`, config);
+  return request
+    .then(response => response.data)
+    .catch(error => console.log(error));
+};
+export default { getAll, create, update, setToken, deleteblog };
 
 //"build:ui": "rd /s /q build && cd ../notes && npm run build --prod && xcopy ..\\notes\build ..\\part3a\build  /s /i",
