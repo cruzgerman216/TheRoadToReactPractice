@@ -6,26 +6,17 @@ import Form from "./components/Form";
 import Notification from "./Notification";
 import "./index.css";
 import Togglable from "./components/Togglable";
+import { useField } from "./hooks/index";
 const App = () => {
   const [blogs, setBlogs] = useState([]);
   const [newBlog, setNewBlog] = useState("");
   const [showAll, setShowAll] = useState(true);
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const username = useField("text");
+  const password = useField("text");
   const [errorMessage, setErrorMessage] = useState(null);
   const [user, setUser] = useState(null);
   const [userblogs, setUserBlogs] = useState([]);
-  useEffect(() => {
-    blogService.getAll().then(initialBlogs => {
-      console.log("test");
-      let copyblogs = initialBlogs;
-      copyblogs.sort(function(a, b) {
-        return a.likes > b.likes ? 1 : -1;
-      });
-      console.log("copyblogs", copyblogs);
-      return setBlogs(copyblogs);
-    });
-  }, []);
+
   useEffect(() => {
     const loggedUserJSON = window.localStorage.getItem("loggedblogappUser");
 
@@ -37,7 +28,17 @@ const App = () => {
       console.log("not logged in");
     }
   }, []);
-
+  useEffect(() => {
+    blogService.getAll().then(initialBlogs => {
+      console.log("test");
+      let copyblogs = initialBlogs;
+      copyblogs.sort(function(a, b) {
+        return a.likes > b.likes ? 1 : -1;
+      });
+      console.log("copyblogs", copyblogs);
+      return setBlogs(copyblogs);
+    });
+  }, []);
   const rows = () => {
     console.log("these are already blogs", blogs);
     console.log("this is use", user);
@@ -54,7 +55,10 @@ const App = () => {
   const handleLogin = async event => {
     event.preventDefault();
     try {
-      const user = await loginService.login({ username, password });
+      const user = await loginService.login({
+        username: username.value,
+        password: password.value
+      });
       const filterblogs = blogs.filter(
         blog => blog.user.username === user.username
       );
@@ -65,8 +69,8 @@ const App = () => {
 
       blogService.setToken(user.token);
       setUser(user);
-      setUsername("");
-      setPassword("");
+      username.reset();
+      password.reset();
     } catch (exception) {
       setErrorMessage("Wrong credentials");
       setTimeout(() => {
@@ -81,18 +85,18 @@ const App = () => {
         username
         <input
           type="text"
-          value={username}
+          value={username.value}
           name="Username"
-          onChange={({ target }) => setUsername(target.value)}
+          onChange={username.onChange}
         />
       </div>
       <div>
         password{" "}
         <input
           type="password"
-          value={password}
+          value={password.value}
           name="Password"
-          onChange={({ target }) => setPassword(target.value)}
+          onChange={password.onChange}
         />
       </div>
       <button type="submit">login</button>

@@ -1,44 +1,39 @@
 import React from "react";
 import { render, fireEvent } from "@testing-library/react";
 import Togglable from "./Togglable";
-
+import NoteForm from "./NoteForm";
 describe("<Togglable />", () => {
-  let component;
+  const Wrapper = props => {
+    const onChange = event => {
+      props.state.value = event.target.value;
+    };
 
-  beforeEach(() => {
-    component = render(
-      <Togglable buttonLabel="show...">
-        <div className="testDiv" />
-      </Togglable>
+    return (
+      <NoteForm
+        value={props.state.value}
+        onSubmit={props.onSubmit}
+        handleChange={onChange}
+      />
     );
-  });
+  };
 
-  test("renders its children", () => {
-    component.container.querySelector(".testDiv");
-  });
+  test("<NoteForm /> updates parent state and calls onSubmit", () => {
+    const onSubmit = jest.fn();
+    const state = {
+      value: ""
+    };
 
-  test("at start the children are not displayed", () => {
-    const div = component.container.querySelector(".togglableContent");
+    const component = render(<Wrapper onSubmit={onSubmit} state={state} />);
 
-    expect(div).toHaveStyle("display: none");
-  });
+    const input = component.container.querySelector("input");
+    const form = component.container.querySelector("form");
 
-  test("after clicking the button, children are displayed", () => {
-    const button = component.getByText("show...");
-    fireEvent.click(button);
+    fireEvent.change(input, {
+      target: { value: "testing of forms could be easier" }
+    });
+    fireEvent.submit(form);
 
-    const div = component.container.querySelector(".togglableContent");
-    expect(div).not.toHaveStyle("display: none");
-  });
-
-  test("toggled content can be closed", () => {
-    const button = component.getByText("show...");
-    fireEvent.click(button);
-
-    const closeButton = component.getByText("cancel");
-    fireEvent.click(closeButton);
-
-    const div = component.container.querySelector(".togglableContent");
-    expect(div).toHaveStyle("display: none");
+    expect(onSubmit.mock.calls.length).toBe(1);
+    expect(state.value).toBe("testing of forms could be easier");
   });
 });

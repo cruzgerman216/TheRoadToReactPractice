@@ -1,27 +1,28 @@
 import React, { useState, useEffect } from "react";
 import blogService from "./../services/blogs";
 import Notifcation from "../Notification";
+import { useField } from "../hooks";
 const Form = ({ blogs, setBlogs, user }) => {
-  const [newtitle, settitle] = useState("");
-  const [newauthor, setauthor] = useState("");
-  const [newurl, seturl] = useState("");
+  const newtitle = useField("text");
+  const newauthor = useField("text");
+  const newurl = useField("text");
   const [blognotification, setBlogNotification] = useState(null);
 
   const addBlog = event => {
     event.preventDefault();
     const blogObject = {
-      title: newtitle,
-      author: newauthor,
-      url: newurl
+      title: newtitle.value,
+      author: newauthor.value,
+      url: newurl.value
     };
 
     blogService
       .create(blogObject)
       .then(data => {
         const blogdup = {
-          title: newtitle,
-          author: newauthor,
-          url: newurl,
+          title: newtitle.value,
+          author: newauthor.value,
+          url: newurl.value,
           user: {
             username: user.username
           }
@@ -31,9 +32,9 @@ const Form = ({ blogs, setBlogs, user }) => {
         setBlogNotification("addblog");
         setTimeout(() => {
           setBlogNotification(null);
-          settitle("");
-          setauthor("");
-          seturl("");
+          newtitle.reset();
+          newauthor.reset();
+          newurl.reset();
         }, 5000);
       })
       .catch(error => console.log(error));
@@ -43,28 +44,28 @@ const Form = ({ blogs, setBlogs, user }) => {
       <h2>Create New Blog</h2>
       <Notifcation
         message={blognotification}
-        blogobject={{ title: newtitle, author: newauthor }}
+        blogobject={{ title: newtitle.value, author: newauthor.value }}
       />
       title:{" "}
       <input
         type="text"
-        value={newtitle}
+        value={newtitle.value}
         name="title"
-        onChange={({ target }) => settitle(target.value)}
+        onChange={newtitle.onChange}
       />
       author:{" "}
       <input
         type="text"
-        value={newauthor}
+        value={newauthor.value}
         name="author"
-        onChange={({ target }) => setauthor(target.value)}
+        onChange={newauthor.onChange}
       />
       url:{" "}
       <input
         type="text"
-        value={newurl}
+        value={newurl.value}
         name="url"
-        onChange={({ target }) => seturl(target.value)}
+        onChange={newurl.onChange}
       />
       <button type="submit">Create</button>
     </form>
